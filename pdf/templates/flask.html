@@ -1,0 +1,245 @@
+<html>
+<head>
+    <title>upload</title>
+</head>
+<style>@import url(https://fonts.googleapis.com/css?family=Open+Sans:700,300);
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: #4CAF50;
+}
+.frame {
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	width: 800px;
+	height: 1500px;
+	margin-top: -200px;
+	margin-left: -200px;
+	border-radius: 2px;
+	box-shadow: 4px 8px 16px 0 rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	background: linear-gradient(to top right, darkmagenta 0%, hotpink 100%);
+	color: #333;
+	font-family: "Open Sans", Helvetica, sans-serif;
+}
+
+.center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 700px;
+	height:1200px;
+	border-radius: 3px;
+	box-shadow: 8px 10px 15px 0 rgba(0, 0, 0, 0.2);
+	background: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-direction: column;
+}
+
+.title {
+	width: 100%;
+	height: 100px;
+	border-bottom: 1px solid #999;
+	text-align: center;
+}
+
+h1 {
+	font-size: 50px;
+	font-weight: 300;
+	color: #666;
+}
+
+.dropzone {
+	width: 600px;
+	height: 200px;
+	border: 1px dashed #999;
+	border-radius: 2px;
+	text-align: center;
+	background-color:#cc00cc;
+}
+
+.upload-icon {
+	margin: 25px 2px 2px 2px;
+}
+
+.upload-input {
+	position: relative;
+	top: -62px;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+.btn {
+	display: block;
+	width: 600px;
+	height: 200px;
+	background: darkmagenta;
+	color: #fff;
+	border-radius: 3px;
+	border: 0;
+	box-shadow: 0 3px 0 0 hotpink;
+	transition: all 0.3s ease-in-out;
+	font-size: 40px;
+}
+
+.btn:hover {
+	background: rebeccapurple;
+	box-shadow: 0 3px 0 0 deeppink;
+}
+.freebirdFormviewerViewItemsItemItem {
+    background-color: #fff;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 24px;
+    margin-top: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+.freebirdFormviewerViewItemsCheckboxChoice:first-child {
+    margin-top: 0;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+</style>
+<body bgcolor="rebeccapurple">
+	<br>
+	<br><br>
+	<center><h1 style="color:white;font-size: 100px;font-style:italic;"> PDF COMPRESSER</h1></center>
+<form action = "/upload" method = "post" enctype="multipart/form-data">
+<div class="frame">
+	<div class="center">
+		<div class="title">
+			<h1>Drop file to upload</h1>
+		</div>
+
+		<div class="dropzone">
+			<center><h1 style="color:white;" ><br><b>choose file</b></h1></center>
+            <input type="file" name="file" class="upload-input" />
+		</div>
+
+		<div class="title">
+			<h1>select level compression</h1>
+		</div>
+		<div class="freebirdFormviewerViewItemsItemItem">
+		 <label class="container"><h1>low level compression</h1>
+  <input type="radio" checked="checked" name="id" value="sai">
+  <span class="checkmark"></span>
+</label>
+<label class="container"><h1>medium level compression</h1>
+  <input type="radio" name="id"value="sai2">
+  <span class="checkmark"></span>
+</label>
+<label class="container"><h1>high level compreesion</h1>
+  <input type="radio" name="id"value="sai3">
+  <span class="checkmark"></span>
+</label>
+
+         </div>
+
+        <div id="myProgress">
+  <div id="myBar"></div>
+</div>
+
+
+        <input type = "submit" value="Upload"class="btn" name="uploadbutton" onclick="move()">
+
+	</div>
+</div>
+    </form>
+<script>
+var i = 0;
+function move() {
+  if (i == 0) {
+    i = 1;
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+      if (width >= 100) {
+        clearInterval(id);
+        i = 0;
+      } else {
+        width++;
+        elem.style.width = width + "%";
+      }
+    }
+  }
+}
+</script>
+<!-- original pen: https://codepen.io/roydigerhund/pen/ZQdbeN  -->
+
+<!-- NO JS ADDED YET -->
+</body>
+</html>

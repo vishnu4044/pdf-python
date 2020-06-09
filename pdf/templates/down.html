@@ -1,0 +1,8 @@
+<!doctype html>
+<title>Python Flask File Download Example</title>
+<h2>Download a file</h2>
+<body onload="setTimeout(function(){window.location = '{{ url_for('.send_image') }}';}, 5000)">
+<p>
+	<a href="{{ url_for('.send_image') }}">Download</a>
+</p>
+<body>
